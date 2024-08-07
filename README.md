@@ -1,2 +1,0 @@
-# Cv-Builder
-A CV Builder is an online tool or application that helps users create professional resumes or CVs (Curriculum Vitae) efficiently. These tools are especially beneficial for individuals who may not be familiar with resume formatting or are looking to save time by using pre-designed templates and guided steps.
