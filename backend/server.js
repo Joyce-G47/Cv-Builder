@@ -1,24 +1,9 @@
 require('dotenv').config();
-
-const mongoose = require('mongoose');
 const express = require('express');
+const db = require('./config/db'); // Import the database connection
 const app = express();
 
-// Use environment variables
-const mongoURI = process.env.MONGO_URI;
-const port = process.env.PORT || 3000; //
-
-// Connect to MongoDB
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('Connected to MongoDB Atlas');
-});
+const port = process.env.PORT || 3000;
 
 // Example route
 app.get('/', (req, res) => {
