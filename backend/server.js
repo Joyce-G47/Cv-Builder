@@ -14,7 +14,7 @@ app.use(express.json({ extended: false }));
 app.use('/api', require('./routes/auth')); // Ensure this path is correct
 
 // Default route
-app.get('/', (req, res) => res.send('API is running'));
+app.get('/', (req, res) => res.send('Server is running'));
 
 // Start the server
 const port = process.env.PORT || 3000;
