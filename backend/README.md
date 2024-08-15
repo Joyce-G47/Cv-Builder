@@ -1,5 +1,10 @@
 # CV Builder Backend
 
+Vuyolwethu
+Sibongile
+Sibusisiswe
+Aphiwe
+
 ## Overview
 The CV Builder Backend is a RESTful API developed to manage user data and CV content for the CV Builder application. It is built using Express.js and MongoDB.
 
