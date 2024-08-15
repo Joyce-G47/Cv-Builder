@@ -1,37 +1,39 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 const { jwtSecret } = require('../config/keys');
+const apiKey = process.env.HUNTER_API_KEY;
+
 
 // Register a new user
 exports.registerUser = async (req, res) => {
-  // Extract name, email, and password from request body
   const { name, email, password } = req.body;
 
   try {
-    // Check if user already exists in the database
     let user = await User.findOne({ email });
     if (user) {
-      // If user exists, send a 400 status with a relevant message
       return res.status(400).json({ msg: 'User already exists' });
     }
 
-    // Create a new user object
-    user = new User({ name, email, password });
+    // Email verification
+    const response = await axios.get(`https://api.hunter.io/v2/email-verifier?email=${email}&api_key=${apiKey}`);
+    const { data } = response.data;
 
-    // Save the new user to the database
+    if (data.result !== 'deliverable') {
+      return res.status(400).json({ error: 'Email is not deliverable' });
+    }
+
+    // Create and save user
+    user = new User({ name, email, password });
     await user.save();
 
-    // Create a payload with the user's ID
     const payload = { user: { id: user.id } };
-
-    // Generate a JWT token with the payload and secret key
     const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
 
-    // Respond with success message and token
     res.status(201).json({ msg: 'User registered successfully', token });
   } catch (err) {
-    // Handle server errors
+    console.error(err); // Log the error details for debugging
     res.status(500).send('Server error');
   }
 };
