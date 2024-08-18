@@ -1,0 +1,42 @@
+.header {
+    background-color: #03396C;
+    color: white;
+  }
+  .container{
+    padding: 10px 10%;
+  }
+  .nav-logo{
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav{
+    align-content: center;
+  }
+  .nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav li {
+    margin-left: 20px;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  li button{
+    height: 30px;
+    width: 70px;
+    background-color: #B3CDE0;
+    border-radius: 5px;
+    border: none;
+    transition: 0.5s;
+    color: #03396C;
+  }
+ 
+  li button:hover{
+     background-color: #6497B1;
+  }
+  

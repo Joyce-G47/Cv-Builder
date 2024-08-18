@@ -1,0 +1,56 @@
+/* colors 
+  background: #011F4B;
+  background: #03396C;
+  background: #005B96;
+  background: #6497B1;
+  background: #B3CDE0;
+  background: #D9E6EF;
+*/
+
+.homepage {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container{
+    padding: 10px 10%;
+  }
+  
+  .homepage {
+    background-color: #D9E6EF;
+    text-align: start;
+    height: 90vh;
+  }
+  .homepage-content{
+    display: flex;
+    gap: 5px;
+    margin-top: 3rem;
+  }
+
+  .homepage h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #03396C;
+  }
+  
+  .homepage p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #03396C;
+  }
+  
+  .cta-button {
+    background-color: #03396C;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .homepage-picture{
+    border: 1px solid black;
+    height: 500px;
+    width: 800px;
+    background-color: whitesmoke;
+    }
+
+  
