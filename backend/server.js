@@ -14,10 +14,13 @@ app.use(express.json({ extended: false }));
 app.use('/api', require('./routes/auth')); // Ensure this path is correct
 
 // Default route
-app.get('/', (req, res) => res.send('Server is running'));
+app.get('/', (req, res) => 
+  res.send('Server is running'));
 
-// Start the server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST; // Bind the server to this IP address
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
 });
