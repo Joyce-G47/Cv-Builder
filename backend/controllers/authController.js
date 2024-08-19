@@ -1,42 +1,63 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const axios = require('axios');
 const { jwtSecret } = require('../config/keys');
-const apiKey = process.env.HUNTER_API_KEY;
+const { sendConfirmationEmail} = require('./emailController');
+const path = require('path');
 
 
-// Register a new user
 exports.registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
+    // Check if the user already exists
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ msg: 'User already exists' });
     }
 
-    // Email verification
-    const response = await axios.get(`https://api.hunter.io/v2/email-verifier?email=${email}&api_key=${apiKey}`);
-    const { data } = response.data;
-
-    if (data.result !== 'deliverable') {
-      return res.status(400).json({ error: 'Email is not deliverable' });
-    }
-
-    // Create and save user
-    user = new User({ name, email, password });
+    // Create and save user with a pending status
+    user = new User({ name, email, password, isVerified: false });
     await user.save();
 
-    const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
+    // Generate confirmation token
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.status(201).json({ msg: 'User registered successfully', token });
+    // Send confirmation email
+    await sendConfirmationEmail(user, token);
+
+    res.status(200).json({ msg: 'Verification email sent. Please verify your email to complete registration.' });
   } catch (err) {
-    console.error(err); // Log the error details for debugging
+    console.error(err);
     res.status(500).send('Server error');
   }
 };
+
+exports.confirmEmail = async (req, res) => {
+  const { token } = req.params;
+
+  try {
+    // Verify the token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Find the user by email
+    const user = await User.findOne({ email: decoded.email });
+
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid token or user does not exist' });
+    }
+
+    // Update the user's confirmation status
+    user.isConfirmed = true;
+    await user.save();
+
+     // Render the confirmation HTML page
+     res.sendFile(path.join(__dirname, '../views/confirmation.html'));
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid or expired token' });
+  }
+};
+
 
 // Login a user
 exports.loginUser = async (req, res) => {
@@ -56,6 +77,11 @@ exports.loginUser = async (req, res) => {
     if (!isMatch) {
       // If passwords do not match, send a 400 status with a relevant message
       return res.status(400).json({ msg: 'Invalid email or password' });
+    }
+
+    //Before login check if user confirmed
+    if (user.isConfirmed !== true) {
+      return res.status(400).json({ msg: 'Please confirm your email to proceed' });
     }
 
     // Create a payload with the user's ID
