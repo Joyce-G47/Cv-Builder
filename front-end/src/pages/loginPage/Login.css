@@ -1,0 +1,129 @@
+/* Container for the login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: 
+      linear-gradient(
+        to right,
+        #011F4B,
+        #03396C,
+        #005B96,
+        #6497B1,
+        #B3CDE0,
+        #D9E6EF
+      ),
+      radial-gradient(
+        circle,
+        rgba(1, 31, 75, 0.5),
+        rgba(3, 57, 108, 0.5),
+        rgba(0, 91, 150, 0.5),
+        rgba(100, 151, 177, 0.5),
+        rgba(179, 205, 224, 0.5),
+        rgba(217, 230, 239, 0.5)
+      ); 
+  }
+  
+  /* Styling for the form */
+  .login-form {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Form header */
+  .login-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem; 
+    font-weight: bold; 
+    color: #08549C; 
+    text-align: center;
+  }
+  
+  /* Styling for input fields and labels */
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem; 
+    color: #011F4B; 
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px; 
+    border: 1px solid #6497B1; 
+    font-size: 1rem;
+    color: #011F4B; 
+    background-color: #f9f9f9; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+    margin-bottom: 1rem; 
+  }
+  
+  /* Input field styles on focus and hover */
+  .input-group input:focus,
+  .input-group input:hover {
+    border-color: #08549C; 
+    box-shadow: 0 0 0 3px rgba(8, 84, 156, 0.2); 
+  
+  /* Styling for the submit button */
+  button {
+    display: block;
+    width: 100%; 
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #08549C; 
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #011F4B; 
+  }
+  
+  /* Styling for the register link */
+  .register-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem; 
+  
+  .register-link a {
+    color: #08549C; 
+    font-weight: bold; 
+    text-decoration: none;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  
+
+/* Styling for the forgot password link */
+.forgot-password-link {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem; 
+  }
+  
+  .forgot-password-link a {
+    color: #08549C; 
+    font-weight: bold; 
+    text-decoration: none;
+  }
+  
+  .forgot-password-link a:hover {
+    text-decoration: underline;
+  }
+  
