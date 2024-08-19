@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.coverletter-page{
+    height: 100vh;
+    background-color: #6497B1;
+}
+.container{
+    padding: 10px 10%; 
+}
+
+.coverletter-content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.coverletter-picture {
+    border: 1px solid #ccc;
+    height: 300px;
+    width: 400px;
+}
+
+.coverletter-text {
+    border: 1px solid #ccc;
+    padding: 20px;
+    height: 300px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.coverletter-picture img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}

@@ -18,7 +18,7 @@
   .homepage {
     background-color: #D9E6EF;
     text-align: start;
-    height: 90vh;
+    /* height: 90vh; */
   }
   .homepage-content{
     display: flex;
@@ -47,10 +47,13 @@
   }
 
   .homepage-picture{
-    border: 1px solid black;
+    border: 0px solid black;
     height: 500px;
     width: 800px;
-    background-color: whitesmoke;
+  
     }
+   .homepage-picture img{
+    height: 350px;
 
+   }
   
