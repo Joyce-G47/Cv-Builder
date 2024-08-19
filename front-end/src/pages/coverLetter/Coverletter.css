@@ -1,45 +1,81 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.coverletter-page{
-    height: 100vh;
-    background-color: #6497B1;
+.coverletter-page {
+  height: 100vh;
+  background-color: #D9E6EF;
+  width: 100%;
 }
-.container{
-    padding: 10px 10%; 
+.coverletter-heading{
+    background-color: #03396C;
+    color: #ccc;
+    width: 100%;
+    height: 150px;
+    align-content: center;
+    font-size: 1.5em;
+    border-radius: 150px 0px 0px 150px;
+}
+
+.container {
+  padding: 10px 10%;
 }
 
 .coverletter-content {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    /* justify-content: space-between; */
+  display: flex;
+  gap: 0px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 .coverletter-picture {
-    border: 1px solid #ccc;
-    height: 300px;
-    width: 400px;
+  border: 1px solid #ccc;
+  height: 350px;
+  width: 500px;
 }
 
 .coverletter-text {
-    border: 1px solid #ccc;
-    padding: 20px;
-    height: 300px;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  height: 350px;
+  width: 550px;
+  align-content: center;
+  text-align: start;
+  background-color: #6497B1;
+  color: #D9E6EF;
+  border-radius: 20px;
+}
+.coverletter-text p{
+    font-size: 16px;
+}
+.coverletter-text h1{
+    font-size: 2em;
+    color: #011F4B;
+}
+.coverletter-picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-.coverletter-picture img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    
+.create-letter-link{
+    height: 50px;
+    background-color: #03396C;
+    width: 200px;
+    border-radius: 10px;
+    align-content: center;
+    text-align: center;
+    margin-top: 2rem;
+    transition: 0.5s;
+}
+.create-letter-link a{
+    text-decoration: none;
+    color: #ccc;
+}
+.create-letter-link:hover{
+    transform: scale(1.1);
+    background-color: #005B96;
 }
