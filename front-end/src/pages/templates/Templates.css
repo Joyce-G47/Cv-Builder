@@ -1,42 +1,72 @@
 .templates-page {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .templates-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  
-  .template-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-  }
-  
-  .template-card img {
-    width: 100%;
-    border-radius: 5px;
-  }
-  
-  .template-card h3 {
-    margin: 10px 0;
-  }
-  
-  .template-card button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .template-card button:hover {
-    background-color: #0056b3;
-  }
-  
+  min-height: 100vh;
+  text-align: center;
+  width: 100%;
+  background-color: #B3CDE0;
+}
+
+.template-section {
+  background-color: #03396C;
+  border-radius: 200px 0px 200px 0px;
+}
+
+.container {
+  padding: 10px 10%;
+}
+
+.templates-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  align-content: center;
+}
+
+.template-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 340px;
+  height: 240px;
+  text-align: center;
+}
+
+.template-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.template-card h3 {
+  margin: 10px 0;
+}
+
+.template-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.template-card button:hover {
+  background-color: #0056b3;
+}
+
+.more-templates {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.more-templates a {
+  text-decoration: none;
+  color: #000;
+  background-color: #B3CDE0;
+  height: 40px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
