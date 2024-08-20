@@ -4,35 +4,25 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background:#f9f9f9;
-
+    background:
 }
 
 /* Styling for the form */
 .login-form {
-    background: 
-      linear-gradient(
-        to right,
-        #0657cf,
-        #035bad,
-        #005B96,
-        #6497B1,
-        #77b9e9,
-        #76bef1
-      ),
-      radial-gradient(
-        circle,
-        rgba(37, 111, 223, 0.5),
-        rgba(13, 126, 231, 0.5),
-        rgba(23, 152, 238, 0.5),
-        rgba(88, 189, 240, 0.5),
-        rgba(172, 216, 247, 0.5),
-        rgba(217, 230, 239, 0.5)
-      );     padding: 2rem;
+    background: #6497B1;
+    padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(62, 152, 236, 0.3);
     max-width: 400px;
     width: 100%;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Floating effect on hover */
+.login-form:hover {
+    box-shadow: 0 20px 40px rgba(74, 164, 248, 0.4);
 }
 
 /* Form header */
