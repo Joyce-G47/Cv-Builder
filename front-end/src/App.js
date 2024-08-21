@@ -5,15 +5,17 @@ import Templates from "./pages/templates/Templates.js";
 import Footer from "./components/Layout/footer/Footer.js";
 import "./App.css";
 import Header from "./components/Layout/header/Header.js";
+import Dashboard from "./pages/dashboard/Dashboard.js";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <Home />
       <Coverletter />
       <Templates />
-      <Footer />
+      <Footer /> */}
+      <Dashboard />
     </div>
   );
 }
