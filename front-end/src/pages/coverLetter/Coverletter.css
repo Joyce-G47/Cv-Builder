@@ -18,8 +18,10 @@
   height: auto;
   padding: 20px;
   text-align: center;
-  font-size: 1.8em;
   border-radius: 150px 0px 0px 150px;
+}
+.coverletter-heading h1{
+  font-size: 1.3em;
 }
 
 .container {
@@ -111,7 +113,7 @@
 
 @media (max-width: 767px) {
   .coverletter-text {
-    text-align: center;
+    text-align: start;
   }
 
   .coverletter-text h1 {
