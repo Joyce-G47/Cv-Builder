@@ -6,55 +6,111 @@
   background: #B3CDE0;
   background: #D9E6EF;
 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .homepage {
-    font-family: Arial, sans-serif;
-    width: 100%;
-  }
-  
-  .container{
-    padding: 10px 10%;
-  }
-    
-  .homepage {
-    background-color: #D9E6EF;
-    text-align: start;
-    /* height: 90vh; */
-  }
-  .homepage-content{
-    display: flex;
-    gap: 5px;
-    margin-top: 3rem;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  background-color: #D9E6EF;
+  text-align: start;
+}
+
+.container {
+  padding: 10px 10%;
+}
+
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 3rem;
+}
+
+.homepage h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #03396C;
+}
+
+.homepage p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #03396C;
+}
+
+.cta-button {
+  background-color: #03396C;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.homepage-picture {
+  border: 0px solid black;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+.homepage-picture img {
+  width: 100%;
+  height: auto;
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+  .homepage-content {
+    flex-direction: row;
+    gap: 20px;
   }
 
   .homepage h2 {
     font-size: 3em;
-    margin-bottom: 20px;
-    color: #03396C;
   }
-  
+
   .homepage p {
     font-size: 1.5em;
-    margin-bottom: 30px;
-    color: #03396C;
-  }
-  
-  .cta-button {
-    background-color: #03396C;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
   }
 
-  .homepage-picture{
-    border: 0px solid black;
+  .homepage-picture {
     height: 500px;
-    width: 800px;
-  
-    }
-   .homepage-picture img{
-    height: 350px;
+  }
 
-   }
-  
+  .homepage-picture img {
+    height: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 10px 5%;
+  }
+
+  .homepage h2 {
+    font-size: 2em;
+  }
+
+  .homepage p {
+    font-size: 1.1em;
+  }
+
+  .homepage-content {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .homepage-picture {
+    height: auto;
+  }
+
+  .homepage-picture img {
+    height: auto;
+  }
+}
