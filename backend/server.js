@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
+const { createAdminUser,getAdminToken } = require('./utils/createAdminUser');
 
 const app = express();
 
@@ -12,6 +13,11 @@ app.use(express.json({ extended: false }));
 
 // Define routes
 app.use('/api', require('./routes/auth')); // Ensure this path is correct
+
+
+app.use('/api', require('./routes/userRoutes')); // User management routes
+
+createAdminUser().then(getAdminToken);
 
 // Default route
 app.get('/', (req, res) => 

@@ -1,7 +1,8 @@
+// middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../config/keys');
 
-module.exports = (req, res, next) => {
+function authMiddleware(req, res, next) {
   const token = req.header('Authorization');
 
   if (!token) {
@@ -9,10 +10,15 @@ module.exports = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, jwtSecret);
+    // Extract token if it starts with 'Bearer '
+    const tokenWithoutBearer = token.startsWith('Bearer ') ? token.slice(7, token.length) : token;
+    const decoded = jwt.verify(tokenWithoutBearer, jwtSecret);
     req.user = decoded.user;
     next();
   } catch (err) {
     res.status(401).json({ msg: 'Token is not valid' });
   }
-};
+}
+
+
+module.exports = authMiddleware;
