@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Coverletter.css";
 
-const Coverletter = () => {
+const Coverletter = ({setSelectionMode}) => {
+  const navigate = useNavigate();
+  const handleCoverletterAction = () =>{
+    setSelectionMode(true);
+    navigate("/dashboard");
+  };
+
   return (
     <div className="coverletter-page">
       <div className="coverletter-heading">
@@ -21,7 +28,7 @@ const Coverletter = () => {
               first impression.
 
             </p>
-            <div className="create-letter-link">
+            <div className="create-letter-link" onClick={handleCoverletterAction}>
                 <a href="#">Create Cover Letter</a>
             </div>
           </div>

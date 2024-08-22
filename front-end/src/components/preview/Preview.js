@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./Preview.css";
 
 const Preview = () => {
-  // State to manage input values
+  const location = useLocation();
+  const selectedTemplate = location.state?.selectedTemplate;
+
   const [formData, setFormData] = useState({
     location: "",
     fullName: "",
@@ -47,6 +50,20 @@ const Preview = () => {
   const toggleEducation = () => setShowEducation(!showEducation);
   const toggleProject = () => setShowProject(!showProject);
   const toggleAchievements = () => setShowAchievements(!showAchievements);
+
+  //Render the selected template
+  const renderTemplate = () =>{
+    switch(selectedTemplate){
+      case 1:
+        return <TemplateOne formData={formData} />
+      case 2:
+        return <TemplateTwo formData={formData} />
+      case 3:
+        return <TemplateThree formData={formData} />
+      default:
+        return <p>Please select a template.</p>;
+    }
+  };
 
   return (
     <div className="preview-section">
@@ -259,5 +276,31 @@ const Preview = () => {
     </div>
   );
 };
+
+// Example templates (replace these with your actual template components)
+const TemplateOne = ({ formData }) => (
+  <div>
+    <h1>{formData.fullName}</h1>
+    <p>{formData.professionalSummary}</p>
+    {/* Render the rest of the form data for this template */}
+  </div>
+);
+
+const TemplateTwo = ({ formData }) => (
+  <div>
+    <h2>{formData.fullName}</h2>
+    <p>{formData.workExperience}</p>
+    {/* Render the rest of the form data for this template */}
+  </div>
+);
+
+const TemplateThree = ({ formData }) => (
+  <div>
+    <h3>{formData.fullName}</h3>
+    <p>{formData.skills}</p>
+    {/* Render the rest of the form data for this template */}
+  </div>
+);
+
 
 export default Preview;
