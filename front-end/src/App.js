@@ -6,6 +6,7 @@ import Templates from "./pages/templates/Templates";
 import Footer from "./components/Layout/footer/Footer";
 import Header from "./components/Layout/header/Header";
 import Dashboard from "./pages/dashboard/Dashboard";
+import ResumeTemplates01 from "./components/resume-templates/resume-templates01/ResumeTemplates01";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Coverletter />
+      <ResumeTemplates01/>
       <Footer />
     </Router>
   );
