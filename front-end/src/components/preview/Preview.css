@@ -25,16 +25,16 @@
   }
     
 .input-column{
-    width: 45%; /* Adjust width as needed */
+    width: 50%; /* Adjust width as needed */
     background-color: #6497B1;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .display-column{
-    height: 550px;
-    width: 45%; /* Adjust width as needed */
-    background-color: #B3CDE0;
+    height: auto;
+    width: 50%; /* Adjust width as needed */
+    /* background-color: #B3CDE0; */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

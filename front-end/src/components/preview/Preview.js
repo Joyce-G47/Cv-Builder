@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import TemplateOne from '../templateone/TemplateOne';
+import TemplateTwo from '../templatetwo/TemplateTwo';
 import "./Preview.css";
 
 const Preview = () => {
-  const location = useLocation();
-  const selectedTemplate = location.state?.selectedTemplate;
+  const selectedTemplate = localStorage.getItem('selectedTemplate');
 
   const [formData, setFormData] = useState({
     location: "",
@@ -20,7 +20,6 @@ const Preview = () => {
     achievements: "",
   });
 
-  // State to manage visibility of contact details
   const [showDetails, setShowDetails] = useState(true);
   const [showProfessional, setShowProfessional] = useState(true);
   const [showWorkExperience, setShowWorkExperience] = useState(true);
@@ -29,37 +28,25 @@ const Preview = () => {
   const [showProject, setShowProject] = useState(true);
   const [showAchievements, setShowAchievements] = useState(true);
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Toggle visibility of contact details
-  const toggleDetails = () => {
-    setShowDetails(!showDetails);
-  };
-
-  const toggleProfessional = () => {
-    setShowProfessional(!showProfessional);
-  };
-  const toggleWorkExperience = () => {
-    setShowWorkExperience(!showWorkExperience);
-  };
+  const toggleDetails = () => setShowDetails(!showDetails);
+  const toggleProfessional = () => setShowProfessional(!showProfessional);
+  const toggleWorkExperience = () => setShowWorkExperience(!showWorkExperience);
   const toggleSkills = () => setShowSkills(!showSkills);
   const toggleEducation = () => setShowEducation(!showEducation);
   const toggleProject = () => setShowProject(!showProject);
   const toggleAchievements = () => setShowAchievements(!showAchievements);
 
-  //Render the selected template
-  const renderTemplate = () =>{
-    switch(selectedTemplate){
-      case 1:
-        return <TemplateOne formData={formData} />
-      case 2:
-        return <TemplateTwo formData={formData} />
-      case 3:
-        return <TemplateThree formData={formData} />
+  const renderTemplate = () => {
+    switch (selectedTemplate) {
+      case '1': // Ensure this matches the stored string in localStorage
+        return <TemplateOne formData={formData} />;
+      case '2': // Ensure this matches the stored string in localStorage
+        return <TemplateTwo formData={formData} />;
       default:
         return <p>Please select a template.</p>;
     }
@@ -74,56 +61,25 @@ const Preview = () => {
           </button>
           {showDetails && (
             <>
-              <h2>Contact Details</h2>
               <div className="form-group">
                 <label htmlFor="fullName">Full Name:</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                />
+                <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="deliveryNote">Email Address:</label>
-                <input
-                  type="text"
-                  id="deliveryNote"
-                  name="deliveryNote"
-                  value={formData.deliveryNote}
-                  onChange={handleChange}
-                />
+                <input type="text" id="deliveryNote" name="deliveryNote" value={formData.deliveryNote} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="location">Address:</label>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                />
+                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="phoneNumber">Phone Number:</label>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                />
+                <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="portfolio">Portfolio:</label>
-                <input
-                  type="text"
-                  id="portfolio"
-                  name="portfolio"
-                  value={formData.portfolio}
-                  onChange={handleChange}
-                />
+                <input type="text" id="portfolio" name="portfolio" value={formData.portfolio} onChange={handleChange} />
               </div>
             </>
           )}
@@ -131,13 +87,11 @@ const Preview = () => {
 
         <div className="professional-summary">
           <button onClick={toggleProfessional}>
-            {showProfessional
-              ? "Hide Professiona-Summary"
-              : "Show Professiona-Summary"}
+            {showProfessional ? "Hide Professional Summary" : "Show Professional Summary"}
           </button>
           {showProfessional && (
             <div className="form-group">
-              <label htmlFor="professionalSummary">Professional Summary</label>
+              <label htmlFor="professionalSummary">Professional Summary:</label>
               <textarea
                 id="professionalSummary"
                 name="professionalSummary"
@@ -150,26 +104,21 @@ const Preview = () => {
 
         <div className="work-experience">
           <button onClick={toggleWorkExperience}>
-            {
-              showWorkExperience
-              ? "Hide Work Experience"
-              : "Show Work Experience"
-            }
+            {showWorkExperience ? "Hide Work Experience" : "Show Work Experience"}
           </button>
-          {
-            showWorkExperience &&(
-              <div className="form-group">
+          {showWorkExperience && (
+            <div className="form-group">
               <label htmlFor="workExperience">Work Experience:</label>
               <textarea
-               id="workExperience"
-               name="workExperience"
-               value={formData.workExperience}
-               onChange={handleChange}
+                id="workExperience"
+                name="workExperience"
+                value={formData.workExperience}
+                onChange={handleChange}
               />
-              </div>
-            )
-          }
+            </div>
+          )}
         </div>
+
         <div className="skills">
           <button onClick={toggleSkills}>
             {showSkills ? "Hide Skills" : "Show Skills"}
@@ -241,66 +190,10 @@ const Preview = () => {
 
       <div className="display-column">
         <h2>Preview</h2>
-        <p>
-          <strong>Address:</strong> {formData.location}
-        </p>
-        <p>
-          <strong>Full Name:</strong> {formData.fullName}
-        </p>
-        <p>
-          <strong>Email Address:</strong> {formData.deliveryNote}
-        </p>
-        <p>
-          <strong>Phone Number:</strong> {formData.phoneNumber}
-        </p>
-        <p>
-          <strong>Portfolio:</strong> {formData.portfolio}
-        </p>
-        <p><strong>Professional Summary:</strong> {formData.professionalSummary}</p>
-        <p>
-          <strong>Experience: </strong> {formData.workExperience}{" "}
-        </p>
-        <p>
-          <strong>Skills:</strong> {formData.skills}
-        </p>
-        <p>
-          <strong>Education:</strong> {formData.education}
-        </p>
-        <p>
-          <strong>Project:</strong> {formData.project}
-        </p>
-        <p>
-          <strong>Achievements:</strong> {formData.achievements}
-        </p>
+        {renderTemplate()}
       </div>
     </div>
   );
 };
-
-// Example templates (replace these with your actual template components)
-const TemplateOne = ({ formData }) => (
-  <div>
-    <h1>{formData.fullName}</h1>
-    <p>{formData.professionalSummary}</p>
-    {/* Render the rest of the form data for this template */}
-  </div>
-);
-
-const TemplateTwo = ({ formData }) => (
-  <div>
-    <h2>{formData.fullName}</h2>
-    <p>{formData.workExperience}</p>
-    {/* Render the rest of the form data for this template */}
-  </div>
-);
-
-const TemplateThree = ({ formData }) => (
-  <div>
-    <h3>{formData.fullName}</h3>
-    <p>{formData.skills}</p>
-    {/* Render the rest of the form data for this template */}
-  </div>
-);
-
 
 export default Preview;
