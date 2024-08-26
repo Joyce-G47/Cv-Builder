@@ -11,15 +11,18 @@ const Preview = () => {
     fullName: "",
     deliveryNote: "",
     phoneNumber: "",
-    jotTitle: "",
+    jobTitle: "",
     portfolio: "",
     professionalSummary: "",
-    workExperience: "",
     skills: "",
     education: "",
     project: "",
     achievements: "",
   });
+
+  const [experiences, setExperiences] = useState([
+    { id: Date.now(), jobTitle: '', startDate: '', endDate: '', present: false, description: '' }
+  ]);
 
   const [showDetails, setShowDetails] = useState(true);
   const [showProfessional, setShowProfessional] = useState(true);
@@ -42,11 +45,26 @@ const Preview = () => {
   const toggleProject = () => setShowProject(!showProject);
   const toggleAchievements = () => setShowAchievements(!showAchievements);
 
+  const addExperience = () => {
+    setExperiences([...experiences, { id: Date.now(), jobTitle: '', startDate: '', endDate: '', present: false, description: '' }]);
+  };
+
+  const removeExperience = (id) => {
+    setExperiences(experiences.filter(exp => exp.id !== id));
+  };
+
+  const handleExperienceChange = (e, id, field) => {
+    const value = field === 'present' ? e.target.checked : e.target.value;
+    setExperiences(experiences.map(exp =>
+      exp.id === id ? { ...exp, [field]: value } : exp
+    ));
+  };
+
   const renderTemplate = () => {
     switch (selectedTemplate) {
-      case '1': // Ensure this matches the stored string in localStorage
+      case '1':
         return <TemplateOne formData={formData} />;
-      case '2': // Ensure this matches the stored string in localStorage
+      case '2':
         return <TemplateTwo formData={formData} />;
       default:
         return <p>Please select a template.</p>;
@@ -83,8 +101,8 @@ const Preview = () => {
                 <input type="text" id="portfolio" name="portfolio" value={formData.portfolio} onChange={handleChange} />
               </div>
               <div className="form-group">
-                <label htmlFor="jobtitle">Job Title:</label>
-                <input type="text" id="jobtitle" name="jobrtitle" value={formData.jotTitle} onChange={handleChange} />
+                <label htmlFor="jobTitle">Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle" value={formData.jobTitle} onChange={handleChange} />
               </div>
             </>
           )}
@@ -112,15 +130,53 @@ const Preview = () => {
             {showWorkExperience ? "Hide Work Experience" : "Show Work Experience"}
           </button>
           {showWorkExperience && (
-            <div className="form-group">
-              <label htmlFor="workExperience">Work Experience:</label>
-              <textarea
-                id="workExperience"
-                name="workExperience"
-                value={formData.workExperience}
-                onChange={handleChange}
-              />
-            </div>
+            <>
+              {experiences.map((experience) => (
+                <div key={experience.id} className="form-group">
+                  <label>Job Title:</label>
+                  <input
+                    type="text"
+                    value={experience.jobTitle}
+                    onChange={(e) => handleExperienceChange(e, experience.id, 'jobTitle')}
+                  />
+
+                  <label>Start Date:</label>
+                  <input
+                    type="month"
+                    value={experience.startDate}
+                    onChange={(e) => handleExperienceChange(e, experience.id, 'startDate')}
+                  />
+
+                  <label>End Date:</label>
+                  <input
+                    type="month"
+                    value={experience.endDate}
+                    onChange={(e) => handleExperienceChange(e, experience.id, 'endDate')}
+                    disabled={experience.present}
+                  />
+
+                  <label className="custom-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={experience.present}
+                      onChange={(e) => handleExperienceChange(e, experience.id, 'present')}
+                    />
+                    <span className="checkmark"></span>
+                    <p>Present:</p>
+                  </label>
+
+
+                  <label>Description:</label>
+                  <textarea
+                    value={experience.description}
+                    onChange={(e) => handleExperienceChange(e, experience.id, 'description')}
+                  />
+
+                  <div className="remove-button" type="button" onClick={() => removeExperience(experience.id)}><img src="removeBtn.png" alt="Remove Button"/></div>
+                </div>
+              ))}
+              <div className="add-button" type="button" onClick={addExperience}><img src="addButton.png" alt="add button"/></div>
+            </>
           )}
         </div>
 
