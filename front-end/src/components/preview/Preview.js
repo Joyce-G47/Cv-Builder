@@ -11,6 +11,7 @@ const Preview = () => {
     fullName: "",
     deliveryNote: "",
     phoneNumber: "",
+    jotTitle: "",
     portfolio: "",
     professionalSummary: "",
     workExperience: "",
@@ -80,6 +81,10 @@ const Preview = () => {
               <div className="form-group">
                 <label htmlFor="portfolio">Portfolio:</label>
                 <input type="text" id="portfolio" name="portfolio" value={formData.portfolio} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="jobtitle">Job Title:</label>
+                <input type="text" id="jobtitle" name="jobrtitle" value={formData.jotTitle} onChange={handleChange} />
               </div>
             </>
           )}
