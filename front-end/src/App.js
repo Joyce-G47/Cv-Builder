@@ -5,7 +5,7 @@ import TemplatesPage from './pages/templatespage/TemplatesPage';
 import Dashboard from './pages/dashboard/Dashboard';
 import Header from './components/Layout/header/Header';
 import Footer from './components/Layout/footer/Footer';
-import Home from './pages/home/Home';
+import Home from './pages/home/Home.js';
 import CoverLetter from './pages/coverLetter/Coverletter';
 
 const App = () => {
