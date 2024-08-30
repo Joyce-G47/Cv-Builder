@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* src/pages/TemplatesPage.css */
+.templates-page {
+  text-align: center;
+}
+
+.template-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.template-selection div {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.template-selection div:hover {
+  transform: scale(1.05);
+}
+
+.template-selection img {
+  width: 200px;
+  height: auto;
+}
+
+.template-selection h2 {
+  margin-top: 10px;
+}
