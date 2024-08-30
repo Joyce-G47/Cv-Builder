@@ -3,23 +3,10 @@ const bcrypt = require('bcryptjs');
 
 // Define the User schema
 const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  isConfirmed: { type: Boolean, default: false },
 });
 
 // Hash the password before saving
