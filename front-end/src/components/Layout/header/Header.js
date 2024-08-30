@@ -1,11 +1,22 @@
 import React, { useState } from "react";
+import RegisterPage from "../../pages/registerpage/RegisterPage"; 
+import LoginPage from "../../pages/loginpage/LoginPage"; 
 import "./Header.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [showRegister, setShowRegister] = useState(false); 
+  const [showLogin, setShowLogin] = useState(false); 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleRegister = () => {
+    setShowRegister(!showRegister);
+  };
+
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
   };
 
   return (
@@ -42,13 +53,13 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="login-button">
-                  <button>
+                  <button onClick={toggleLogin}>
                     <i className="fas fa-sign-in-alt"></i> Login
                   </button>
                 </li>
                 <li className="signup-button">
-                  <button>
-                    <i className="fas fa-user-plus"></i> SignUp
+                  <button onClick={toggleRegister}>
+                    <i className="fas fa-user-plus"></i> Sign Up
                   </button>
                 </li>
               </ul>
@@ -56,6 +67,25 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+      {/* Render the Registration and Login pop-ups conditionally */}
+      {showRegister && (
+        <div className="popup">
+          <div className="popup-content">
+            <button className="close-popup" onClick={toggleRegister}>X</button>
+            <RegisterPage />
+          </div>
+        </div>
+      )}
+
+      {showLogin && (
+        <div className="popup">
+          <div className="popup-content">
+            <button className="close-popup" onClick={toggleLogin}>X</button>
+            <LoginPage />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

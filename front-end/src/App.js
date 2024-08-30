@@ -7,6 +7,7 @@ import Header from './components/Layout/header/Header';
 import Footer from './components/Layout/footer/Footer';
 import Home from './pages/home/home.js';
 import CoverLetter from './pages/coverLetter/Coverletter';
+import RegisterPage from './pages/registerpage/RegisterPage.js';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<><Home /> <CoverLetter /> <TemplatesPage /></>} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/registerpage" element={<RegisterPage />} />
       </Routes>
       <Footer />
     </Router>
