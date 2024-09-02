@@ -7,8 +7,8 @@ import Header from './components/Layout/header/Header';
 import Footer from './components/Layout/footer/Footer';
 import Home from './pages/home/home.js';
 import CoverLetter from './pages/coverLetter/Coverletter';
-import RegisterPage from './pages/registerpage/RegisterPage.js';
-
+import RegisterPage from './components/registerpage/RegisterPage.js';
+import LoginPage from './components/loginPage/LoginPage.js';
 const App = () => {
   return (
     <Router>
@@ -17,7 +17,8 @@ const App = () => {
         <Route path="/" element={<><Home /> <CoverLetter /> <TemplatesPage /></>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/registerpage" element={<RegisterPage />} />
-      </Routes>
+        <Route path="/loginPage" element={<LoginPage  />} />
+       </Routes>
       <Footer />
     </Router>
   );

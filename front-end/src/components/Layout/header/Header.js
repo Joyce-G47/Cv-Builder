@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import RegisterPage from "../../pages/registerpage/RegisterPage"; 
-import LoginPage from "../../pages/loginpage/LoginPage"; 
+import LoginPage from "../../loginPage/LoginPage";
+import RegisterPage from "../../registerpage/RegisterPage";
 import "./Header.css";
 
 const Header = () => {

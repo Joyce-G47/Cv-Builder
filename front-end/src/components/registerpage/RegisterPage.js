@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom"; // Import Link component
 import "./RegisterPage.css";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -78,7 +79,7 @@ const RegisterPage = () => {
             onBlur={() => setUserFocus(false)}
           />
           <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
             4 to 24 characters.<br />
             Must begin with a letter.<br />
             Letters, numbers, underscores, hyphens allowed.
@@ -101,7 +102,7 @@ const RegisterPage = () => {
             onBlur={() => setPwdFocus(false)}
           />
           <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
             8 to 24 characters.<br />
             Must include uppercase and lowercase letters, a number, and a special character.<br />
             Allowed special characters: <span aria-label="exclamation mark">!</span>
@@ -126,11 +127,12 @@ const RegisterPage = () => {
             onBlur={() => setMatchFocus(false)}
           />
           <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
             Must match the first password input field.
           </p>
 
           <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+          <p>Already have an Account? <Link to="/LoginPage">Login Here</Link></p> 
         </form>
       )}
     </section>

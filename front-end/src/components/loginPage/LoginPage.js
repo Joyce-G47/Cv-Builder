@@ -1,9 +1,10 @@
 // src/components/pages/loginpage/LoginPage.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./LoginPage.css"; // Create a CSS file for styling
+import { Link } from "react-router-dom";
+import "./LoginPage.css";
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -46,7 +47,7 @@ const LoginPage = () => {
           aria-describedby="uidnote"
         />
         <p id="uidnote" className={user && !validName ? "instructions" : "offscreen"}>
-          <FontAwesomeIcon icon={faInfoCircle} />
+          <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
           4 to 24 characters.<br />
           Must begin with a letter.<br />
           Letters, numbers, underscores, hyphens allowed.
@@ -67,12 +68,14 @@ const LoginPage = () => {
           aria-describedby="pwdnote"
         />
         <p id="pwdnote" className={pwd && !validPwd ? "instructions" : "offscreen"}>
-          <FontAwesomeIcon icon={faInfoCircle} />
+          <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
           8 to 24 characters.<br />
           Must include uppercase and lowercase letters, and a number.
         </p>
 
         <button disabled={!validName || !validPwd}>Login</button>
+
+        <p>Don't have an Account? <Link to="/RegisterPage">Sinup Here </Link></p>
       </form>
     </section>
   );
