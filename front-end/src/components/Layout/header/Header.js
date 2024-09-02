@@ -13,10 +13,12 @@ const Header = () => {
 
   const toggleRegister = () => {
     setShowRegister(!showRegister);
+    setShowLogin(false);
   };
 
   const toggleLogin = () => {
     setShowLogin(!showLogin);
+    setShowRegister(false);
   };
 
   return (
@@ -73,7 +75,7 @@ const Header = () => {
         <div className="popup">
           <div className="popup-content">
             <button className="close-popup" onClick={toggleRegister}>X</button>
-            <RegisterPage />
+            <RegisterPage onSwitchToLogin={toggleLogin} />
           </div>
         </div>
       )}
@@ -82,7 +84,7 @@ const Header = () => {
         <div className="popup">
           <div className="popup-content">
             <button className="close-popup" onClick={toggleLogin}>X</button>
-            <LoginPage />
+            <LoginPage onSwitchToRegister={toggleRegister} />
           </div>
         </div>
       )}

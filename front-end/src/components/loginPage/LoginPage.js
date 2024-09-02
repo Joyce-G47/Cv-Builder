@@ -10,7 +10,7 @@ import "./LoginPage.css";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 
-const LoginPage = () => {
+const LoginPage = ({onSwitchToRegister}) => {
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [validName, setValidName] = useState(false);
@@ -75,7 +75,12 @@ const LoginPage = () => {
 
         <button disabled={!validName || !validPwd}>Login</button>
 
-        <p>Don't have an Account? <Link to="/RegisterPage">Sinup Here </Link></p>
+        <p>
+          Don't have an Account?{" "}
+          <span onClick={onSwitchToRegister} className="register-link">
+            Signup Here
+          </span>
+        </p>
       </form>
     </section>
   );

@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom"; // Import Link component
+import { Link } from "react-router-dom"; 
+import LoginPage from "../loginPage/LoginPage";
 import "./RegisterPage.css";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const RegisterPage = () => {
+const RegisterPage = ({onSwitchToLogin}) => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -25,6 +26,8 @@ const RegisterPage = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -48,9 +51,14 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your submit logic here, such as sending data to the server
     setSuccess(true);
   };
+
+  
+  const handleShowLogin = () => {
+    setShowLogin(true);
+  };
+
 
   return (
     <section className="register-section">
@@ -132,7 +140,12 @@ const RegisterPage = () => {
           </p>
 
           <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
-          <p>Already have an Account? <Link to="/LoginPage">Login Here</Link></p> 
+          <p>
+            Already have an Account?{" "}
+            <span onClick={onSwitchToLogin} className="login-link">
+              Login Here
+            </span>
+          </p>
         </form>
       )}
     </section>
