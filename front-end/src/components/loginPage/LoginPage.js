@@ -1,56 +1,76 @@
 // src/components/pages/loginpage/LoginPage.js
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import "./LoginPage.css";
+import axios from 'axios';
 
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for email validation
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 
-const LoginPage = ({onSwitchToRegister}) => {
-  const [user, setUser] = useState('');
+const LoginPage = ({ onSwitchToRegister }) => {
+  const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
-  const [validName, setValidName] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
   const [validPwd, setValidPwd] = useState(false);
+  const navigate = useNavigate();
 
-  // Validate username and password
+  // Validate email and password
   useEffect(() => {
-    setValidName(USER_REGEX.test(user));
+    setValidEmail(EMAIL_REGEX.test(email));
     setValidPwd(PWD_REGEX.test(pwd));
-  }, [user, pwd]);
+  }, [email, pwd]);
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Add your login logic here
+
+    if (!validEmail || !validPwd) {
+      setErrMsg("Invalid Entry");
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email: email,
+        password: pwd,
+      });
+      if(response.data.token){
+        localStorage.setItem("token", response.data.token);
+        navigate("home");
+      }
+      else{
+        setErrMsg("Login failed");
+      }
+    } catch (error) {
+      setError("Server error: " + (err.response?.data?.msg || err.message));
+    }
   };
 
   return (
     <section className="login-section">
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleLogin} className="login-form">
         <h1>Login</h1>
 
-        <label htmlFor="username">
-          Username:
-          <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-          <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
+        <label htmlFor="email">
+          Email:
+          <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
+          <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
         </label>
         <input
-          type="text"
-          id="username"
-          onChange={(e) => setUser(e.target.value)}
-          value={user}
+          type="email"
+          id="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
           required
-          aria-invalid={validName ? "false" : "true"}
-          aria-describedby="uidnote"
+          aria-invalid={validEmail ? "false" : "true"}
+          aria-describedby="emailnote"
         />
-        <p id="uidnote" className={user && !validName ? "instructions" : "offscreen"}>
+        <p id="emailnote" className={email && !validEmail ? "instructions" : "offscreen"}>
           <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
-          4 to 24 characters.<br />
-          Must begin with a letter.<br />
-          Letters, numbers, underscores, hyphens allowed.
+          Please enter a valid email address.
         </p>
 
         <label htmlFor="password">
@@ -73,7 +93,7 @@ const LoginPage = ({onSwitchToRegister}) => {
           Must include uppercase and lowercase letters, and a number.
         </p>
 
-        <button disabled={!validName || !validPwd}>Login</button>
+        <button disabled={!validEmail || !validPwd}>Login</button>
 
         <p>
           Don't have an Account?{" "}

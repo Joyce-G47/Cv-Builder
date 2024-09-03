@@ -1,21 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom"; 
-import LoginPage from "../loginPage/LoginPage";
 import "./RegisterPage.css";
+import axios from 'axios';
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const RegisterPage = ({onSwitchToLogin}) => {
-  const userRef = useRef();
+const RegisterPage = ({ onSwitchToLogin }) => {
+  const nameRef = useRef();
   const errRef = useRef();
 
-  const [user, setUser] = useState('');
-  const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
-
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
@@ -30,13 +27,8 @@ const RegisterPage = ({onSwitchToLogin}) => {
   const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
-    userRef.current.focus();
+    nameRef.current.focus();
   }, []);
-
-  useEffect(() => {
-    const result = USER_REGEX.test(user);
-    setValidName(result);
-  }, [user]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
@@ -47,51 +39,64 @@ const RegisterPage = ({onSwitchToLogin}) => {
 
   useEffect(() => {
     setErrMsg('');
-  }, [user, pwd, matchPwd]);
+  }, [name, email, pwd, matchPwd]);
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    setSuccess(true);
-  };
+    setErrMsg('');
 
-  
-  const handleShowLogin = () => {
-    setShowLogin(true);
-  };
+    
+    try {
+      const response = await axios.post('/register', {
+        name, 
+        email,
+        password: pwd,
+      });
 
+      if (response.data.token){
+        localStorage.setItem('token', response.data.token);
+        alert('Signup successful!');
+      }
+      else{
+        setErrMsg('Register failed')
+      }
+    } catch (error) {
+      setErrMsg('Server error: ' + (error.response?.data?.msg || error.message));
+    }
+  };
 
   return (
     <section className="register-section">
       {success ? (
         <h1>Registration successful!</h1>
       ) : (
-        <form onSubmit={handleSubmit} className="register-form">
+        <form onSubmit={handleRegister} className="register-form">
           <h1>Register</h1>
 
-          <label htmlFor="username">
-            Username:
-            <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-            <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
+          <label htmlFor="name">
+            Name:
           </label>
           <input
             type="text"
-            id="username"
-            ref={userRef}
+            id="name"
+            ref={nameRef}
             autoComplete="off"
-            onChange={(e) => setUser(e.target.value)}
-            value={user}
+            onChange={(e) => setName(e.target.value)}
+            value={name}
             required
-            aria-invalid={validName ? "false" : "true"}
-            aria-describedby="uidnote"
-            onFocus={() => setUserFocus(true)}
-            onBlur={() => setUserFocus(false)}
           />
-          <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
-            4 to 24 characters.<br />
-            Must begin with a letter.<br />
-            Letters, numbers, underscores, hyphens allowed.
-          </p>
+
+          <label htmlFor="email">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            autoComplete="off"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
 
           <label htmlFor="password">
             Password:
@@ -139,7 +144,7 @@ const RegisterPage = ({onSwitchToLogin}) => {
             Must match the first password input field.
           </p>
 
-          <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+          <button disabled={!name || !email || !validPwd || !validMatch ? true : false}>Sign Up</button>
           <p>
             Already have an Account?{" "}
             <span onClick={onSwitchToLogin} className="login-link">
