@@ -1,8 +1,11 @@
+//src
 import React, { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./RegisterPage.css";
 import axios from 'axios';
+import {useRegister} from '../../api/auth';
+
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -47,7 +50,7 @@ const RegisterPage = ({ onSwitchToLogin }) => {
 
     
     try {
-      const response = await axios.post('/register', {
+      const response = await axios.post('http://192.168.12.193:5000/api/register', {
         name, 
         email,
         password: pwd,

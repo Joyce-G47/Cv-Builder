@@ -1,9 +1,9 @@
 // src/components/pages/loginpage/LoginPage.js
-
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import {useLogin} from '../../api/auth';
 import "./LoginPage.css";
 import axios from 'axios';
 
@@ -36,7 +36,7 @@ const LoginPage = ({ onSwitchToRegister }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('http://192.168.12.193:5000/api/login', {
         email: email,
         password: pwd,
       });
