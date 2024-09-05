@@ -1,6 +1,6 @@
 // src/components/pages/loginpage/LoginPage.js
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,12 +11,15 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for emai
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 
 const LoginPage = ({ onSwitchToRegister }) => {
+  
+
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [validPwd, setValidPwd] = useState(false);
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   // Validate email and password
   useEffect(() => {
@@ -45,7 +48,7 @@ const LoginPage = ({ onSwitchToRegister }) => {
         setErrMsg("Login failed");
       }
     } catch (error) {
-      setError("Server error: " + (err.response?.data?.msg || err.message));
+      setError("Server error: " + (error.response?.data?.msg || error.message));
     }
   };
 
