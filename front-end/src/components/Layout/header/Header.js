@@ -1,11 +1,27 @@
 import React, { useState } from "react";
+import LoginPage from "../../loginPage/LoginPage";
+import RegisterPage from "../../registerpage/RegisterPage";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleRegister = () => {
+    setShowRegister(!showRegister);
+    setShowLogin(false);
+  };
+
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+    setShowRegister(false);
   };
 
   return (
@@ -17,8 +33,9 @@ const Header = () => {
               <h1>CV Builder</h1>
             </div>
             <div className="menu-icon" onClick={toggleMenu}>
-              <i className="fas fa-bars"></i>
+              <FontAwesomeIcon icon={faBars} />
             </div>
+            
             <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
               <ul>
                 <li>
@@ -42,13 +59,13 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="login-button">
-                  <button>
+                  <button onClick={toggleLogin}>
                     <i className="fas fa-sign-in-alt"></i> Login
                   </button>
                 </li>
                 <li className="signup-button">
-                  <button>
-                    <i className="fas fa-user-plus"></i> SignUp
+                  <button onClick={toggleRegister}>
+                    <i className="fas fa-user-plus"></i> Sign Up
                   </button>
                 </li>
               </ul>
@@ -56,6 +73,29 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+      {/* Render the Registration and Login pop-ups conditionally */}
+      {showRegister && (
+        <div className="popup">
+          <div className="popup-content">
+            <button className="close-popup" onClick={toggleRegister}>
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+            <RegisterPage onSwitchToLogin={toggleLogin} />
+          </div>
+        </div>
+      )}
+
+      {showLogin && (
+        <div className="popup">
+          <div className="popup-content">
+            <button className="close-popup" onClick={toggleLogin}>
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+            <LoginPage onSwitchToRegister={toggleRegister} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
