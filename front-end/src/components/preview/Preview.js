@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TemplateOne from "../templateone/TemplateOne";
 import TemplateTwo from "../templatetwo/TemplateTwo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import "./Preview.css";
 
 const Preview = () => {
@@ -45,13 +48,13 @@ const Preview = () => {
     { id: 1, name: "", link: "", tools: "", description: "" },
   ]);
 
-  const [showDetails, setShowDetails] = useState(true);
-  const [showProfessional, setShowProfessional] = useState(true);
-  const [showWorkExperience, setShowWorkExperience] = useState(true);
-  const [showSkills, setShowSkills] = useState(true);
-  const [showEducation, setShowEducation] = useState(true);
-  const [showProject, setShowProject] = useState(true);
-  const [showAchievements, setShowAchievements] = useState(true);
+  const [showDetails, setShowDetails] = useState(false);
+  const [showProfessional, setShowProfessional] = useState(false);
+  const [showWorkExperience, setShowWorkExperience] = useState(false);
+  const [showSkills, setShowSkills] = useState(false);
+  const [showEducation, setShowEducation] = useState(false);
+  const [showProject, setShowProject] = useState(false);
+  const [showAchievements, setShowAchievements] = useState(false);
 
   //hangle changes
   const handleChange = (e) => {
@@ -165,7 +168,15 @@ const Preview = () => {
       <div className="input-column">
         <div className="contact-details">
           <button onClick={toggleDetails}>
-            {showDetails ? "Hide Contact Details" : "Show Contact Details"}
+            {showDetails ? (
+              <>
+                Contact Details <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                Contact Details <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showDetails && (
             <>
@@ -236,9 +247,15 @@ const Preview = () => {
         {/*************Professional-Summary ***********/}
         <div className="professional-summary">
           <button onClick={toggleProfessional}>
-            {showProfessional
-              ? "Hide Professional Summary"
-              : "Show Professional Summary"}
+            {showProfessional ? (
+              <>
+                ProfessionalSummary <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                ProfessionalSummary <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showProfessional && (
             <div className="form-group">
@@ -256,9 +273,15 @@ const Preview = () => {
         {/************* Experience ***********/}
         <div className="work-experience">
           <button onClick={toggleWorkExperience}>
-            {showWorkExperience
-              ? "Hide Work Experience"
-              : "Show Work Experience"}
+            {showWorkExperience ? (
+              <>
+                Experience <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                Experience <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showWorkExperience && (
             <>
@@ -426,7 +449,15 @@ const Preview = () => {
         {/************* Skills ***********/}
         <div className="skills">
           <button onClick={toggleSkills}>
-            {showSkills ? "Hide Skills" : "Show Skills"}
+            {showSkills ? (
+              <>
+                Skills <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                Skills <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showSkills && (
             <div className="form-group">
@@ -444,7 +475,15 @@ const Preview = () => {
         {/************* Education ***********/}
         <div className="education">
           <button onClick={toggleEducation}>
-            {showEducation ? "Hide Education" : "Show Education"}
+            {showEducation ? (
+              <>
+                Education <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                Education <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showEducation && (
             <>
@@ -605,7 +644,15 @@ const Preview = () => {
         {/************* Project ***********/}
         <div className="project">
           <button onClick={toggleProject}>
-            {showProject ? "Hide Project" : "Show Project"}
+            {showProject ? (
+              <>
+                Projects <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                Projects <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showProject && (
             <>
@@ -674,7 +721,15 @@ const Preview = () => {
         {/************* Achivements ***********/}
         <div className="achievements">
           <button onClick={toggleAchievements}>
-            {showAchievements ? "Hide Achievements" : "Show Achievements"}
+            {showAchievements ? (
+              <>
+                Achievements <FontAwesomeIcon icon={faChevronUp} />
+              </>
+            ) : (
+              <>
+                Achievements <FontAwesomeIcon icon={faChevronDown} />
+              </>
+            )}
           </button>
           {showAchievements && (
             <div className="form-group">
