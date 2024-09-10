@@ -305,12 +305,12 @@ const Preview = () => {
                     }
                   />
 
-                  <label>start Date</label>
+                  <label>Start Date</label>
                   <div className="date-inputs">
                     <select
                       value={experience.startDate.split("-")[1] || ""}
                       onChange={(e) =>
-                        handleEducationChange(
+                        handleExperienceChange(
                           {
                             target: {
                               value: `${
@@ -335,7 +335,7 @@ const Preview = () => {
                     <select
                       value={experience.startDate.split("-")[0] || ""}
                       onChange={(e) =>
-                        handleEducationChange(
+                        handleExperienceChange(
                           {
                             target: {
                               value: `${e.target.value}-${
@@ -362,7 +362,7 @@ const Preview = () => {
                     <select
                       value={experience.endDate.split("-")[1] || ""}
                       onChange={(e) =>
-                        handleEducationChange(
+                        handleExperienceChange(
                           {
                             target: {
                               value: `${
@@ -388,7 +388,7 @@ const Preview = () => {
                     <select
                       value={experience.endDate.split("-")[0] || ""}
                       onChange={(e) =>
-                        handleEducationChange(
+                        handleExperienceChange(
                           {
                             target: {
                               value: `${e.target.value}-${
@@ -415,7 +415,7 @@ const Preview = () => {
                       type="checkbox"
                       checked={experience.present}
                       onChange={(e) =>
-                        handleEducationChange(e, experience.id, "present")
+                        handleExperienceChange(e, experience.id, "present")
                       }
                     />
                     <span className="checkmark"></span>

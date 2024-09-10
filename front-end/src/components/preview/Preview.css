@@ -12,7 +12,6 @@
     background-color: #6497B1;
 }
 
-
 .input-column button {
     margin-bottom: 20px;
     padding: 10px 15px;
@@ -25,7 +24,7 @@
   }
     
 .input-column{
-    width: 40%; /* Adjust width as needed */
+    width: 40%; 
     background-color: #6497B1;
     padding: 20px;
     border-radius: 8px;
@@ -34,7 +33,7 @@
 }
 .display-column{
     height: auto;
-    width: 60%; /* Adjust width as needed */
+    width: 60%; 
     /* background-color: #B3CDE0; */
     padding: 20px;
     border-radius: 8px;
@@ -61,3 +60,28 @@
     margin: 10px 0;
     font-size: 1.2em;
 }
+.date-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-inputs select {
+    width: 48%; 
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 1.1em;
+}
+
+.date-inputs select:focus {
+    outline: none;
+    border-color: #03396C; 
+}
+
+.date-inputs option {
+    padding: 8px;
+}
+
