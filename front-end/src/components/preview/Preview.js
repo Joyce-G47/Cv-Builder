@@ -4,6 +4,8 @@ import TemplateTwo from "../templatetwo/TemplateTwo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import "./Preview.css";
 
 const Preview = () => {
@@ -435,12 +437,12 @@ const Preview = () => {
                     type="button"
                     onClick={() => removeExperience(experience.id)}
                   >
-                    <img src="removeBtn.png" alt="Remove Button" />
+                    <FontAwesomeIcon icon={faTrash} style={{color: "#d21e27",}} />
                   </div>
                 </div>
               ))}
               <div className="add-button" type="button" onClick={addExperience}>
-                <img src="addButton.png" alt="add button" />
+                <FontAwesomeIcon icon={faPlus} style={{color: "#0d8715",}} />
               </div>
             </>
           )}
@@ -630,12 +632,12 @@ const Preview = () => {
                     type="button"
                     onClick={() => removeEducation(edu.id)}
                   >
-                    <img src="removeBtn.png" alt="Remove Button" />
+                    <FontAwesomeIcon icon={faTrash} style={{color: "#d21e27",}} />
                   </div>
                 </div>
               ))}
               <div className="add-button" type="button" onClick={addEducation}>
-                <img src="addButton.png" alt="Add Button" />
+                <FontAwesomeIcon icon={faPlus} style={{color: "#0d8715",}} />
               </div>
             </>
           )}
