@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Preview.css";
 
 const Preview = () => {
@@ -21,7 +21,6 @@ const Preview = () => {
     portfolio: "",
     professionalSummary: "",
     skills: "",
-    achievements: "",
   });
 
   const [educations, setEducation] = useState([
@@ -47,7 +46,11 @@ const Preview = () => {
   ]);
 
   const [projects, setProjects] = useState([
-    { id: 1, name: "", link: "", tools: "", description: "" },
+    { id: 1, name: "", link: "", displayText: "", tools: "", description: "" },
+  ]);
+
+  const [achievements, setAchievements] = useState([
+    { id: 1, month: "", year: "", description: "" },
   ]);
 
   const [showDetails, setShowDetails] = useState(false);
@@ -144,6 +147,7 @@ const Preview = () => {
       id: projects.length + 1,
       name: "",
       link: "",
+      displayText: "",
       tools: "",
       description: "",
     };
@@ -152,6 +156,32 @@ const Preview = () => {
 
   const removeProject = (id) => {
     setProjects(projects.filter((project) => project.id !== id));
+  };
+
+  //Achievements
+  const handleAchievementChange = (e, achievementId, field) => {
+    const updatedAchievements = achievements.map((achievement) =>
+      achievement.id === achievementId
+        ? { ...achievement, [field]: e.target.value }
+        : achievement
+    );
+    setAchievements(updatedAchievements);
+  };
+
+  const addAchievement = () => {
+    const newAchievement = {
+      id: achievements.length + 1,
+      month: "",
+      year: "",
+      description: "",
+    };
+    setAchievements([...achievements, newAchievement]);
+  };
+
+  const removeAchievement = (achievementId) => {
+    setAchievements(
+      achievements.filter((achievement) => achievement.id !== achievementId)
+    );
   };
 
   const renderTemplate = () => {
@@ -437,12 +467,15 @@ const Preview = () => {
                     type="button"
                     onClick={() => removeExperience(experience.id)}
                   >
-                    <FontAwesomeIcon icon={faTrash} style={{color: "#d21e27",}} />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      style={{ color: "#d21e27" }}
+                    />
                   </div>
                 </div>
               ))}
               <div className="add-button" type="button" onClick={addExperience}>
-                <FontAwesomeIcon icon={faPlus} style={{color: "#0d8715",}} />
+                <FontAwesomeIcon icon={faPlus} style={{ color: "#0d8715" }} />
               </div>
             </>
           )}
@@ -632,12 +665,15 @@ const Preview = () => {
                     type="button"
                     onClick={() => removeEducation(edu.id)}
                   >
-                    <FontAwesomeIcon icon={faTrash} style={{color: "#d21e27",}} />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      style={{ color: "#d21e27" }}
+                    />
                   </div>
                 </div>
               ))}
               <div className="add-button" type="button" onClick={addEducation}>
-                <FontAwesomeIcon icon={faPlus} style={{color: "#0d8715",}} />
+                <FontAwesomeIcon icon={faPlus} style={{ color: "#0d8715" }} />
               </div>
             </>
           )}
@@ -676,8 +712,22 @@ const Preview = () => {
                   <input
                     id={`projectLink-${project.id}`}
                     name="link"
+                    placeholder="URL (e.g, Link of the Project/GitHub link)"
                     value={project.link}
                     onChange={(e) => handleProjectChange(e, project.id, "link")}
+                  />
+
+                  <label htmlFor={`displayText-${project.id}`}>
+                    Link Display Text:
+                  </label>
+                  <input
+                    id={`displayText-${project.id}`}
+                    name="displayText"
+                    placeholder="Name of the link (e.g.,Visit GitHub)"
+                    value={project.displayText}
+                    onChange={(e) =>
+                      handleProjectChange(e, project.id, "displayText")
+                    }
                   />
 
                   <label htmlFor={`projectTools-${project.id}`}>
@@ -704,18 +754,21 @@ const Preview = () => {
                     }
                   />
 
-                  <button
+                  <div
                     className="remove-button"
                     type="button"
                     onClick={() => removeProject(project.id)}
                   >
-                    Remove Project
-                  </button>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      style={{ color: "#d21e27" }}
+                    />
+                  </div>
                 </div>
               ))}
-              <button className="add-button" type="button" onClick={addProject}>
-                Add Project
-              </button>
+              <div className="add-button" type="button" onClick={addProject}>
+                <FontAwesomeIcon icon={faPlus} style={{ color: "#0d8715" }} />
+              </div>
             </>
           )}
         </div>
@@ -734,15 +787,89 @@ const Preview = () => {
             )}
           </button>
           {showAchievements && (
-            <div className="form-group">
-              <label htmlFor="achievements">Achievements:</label>
-              <textarea
-                id="achievements"
-                name="achievements"
-                value={formData.achievements}
-                onChange={handleChange}
-              />
-            </div>
+            <>
+              {achievements.map((achievement, index) => (
+                <div key={achievement.id} className="form-group">
+                  <label htmlFor={`achievementDescription-${achievement.id}`}>
+                    Name of Achievement:
+                  </label>
+                  <input
+                    id={`achievementDescription-${achievement.id}`}
+                    name="description"
+                    value={achievement.description}
+                    onChange={(e) =>
+                      handleAchievementChange(e, achievement.id, "description")
+                    }
+                  />
+
+                  <label htmlFor={`achievementMonth-${achievement.id}`}>
+                    Month:
+                  </label>
+                  <select
+                    id={`achievementMonth-${achievement.id}`}
+                    name="month"
+                    value={achievement.month}
+                    onChange={(e) =>
+                      handleAchievementChange(e, achievement.id, "month")
+                    }
+                  >
+                    <option value="">Select Month</option>
+                    {[
+                      "January",
+                      "February",
+                      "March",
+                      "April",
+                      "May",
+                      "June",
+                      "July",
+                      "August",
+                      "September",
+                      "October",
+                      "November",
+                      "December",
+                    ].map((month) => (
+                      <option key={month} value={month}>
+                        {month}
+                      </option>
+                    ))}
+                  </select>
+
+                  <label htmlFor={`achievementYear-${achievement.id}`}>
+                    Year:
+                  </label>
+                  <input
+                    id={`achievementYear-${achievement.id}`}
+                    name="year"
+                    type="number"
+                    min="1900"
+                    max={new Date().getFullYear()}
+                    value={achievement.year}
+                    onChange={(e) =>
+                      handleAchievementChange(e, achievement.id, "year")
+                    }
+                  />
+
+                  <button
+                    className="remove-button"
+                    type="button"
+                    onClick={() => removeAchievement(achievement.id)}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      style={{ color: "#d21e27" }}
+                    />
+                  </button>
+                </div>
+              ))}
+
+              <button
+                className="add-button"
+                type="button"
+                onClick={addAchievement}
+              >
+                <FontAwesomeIcon icon={faPlus} style={{ color: "#0d8715" }} />
+              </button>
+            </>
           )}
         </div>
       </div>
