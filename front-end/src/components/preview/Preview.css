@@ -1,207 +1,372 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .preview-section {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px;
-    background-color: #6497B1;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background-color: #6497b1;
 }
 
 .input-column button {
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    width: 100%;
-    background-color: #03396C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-    
-.input-column{
-    width: 40%; 
-    background-color: #6497B1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    height: auto;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  width: 100%;
+  background-color: #03396c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.display-column{
-    height: auto;
-    width: 60%; 
-    /* background-color: #B3CDE0; */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+.input-column {
+  width: 40%;
+  background-color: #6497b1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  height: auto;
 }
+.display-column {
+  height: auto;
+  width: 60%;
+  /* background-color: #B3CDE0; */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  background-color: #e2e5e7;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
-
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-size: .9em;
-
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.9em;
 }
 
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 .display-column p {
-    margin: 10px 0;
-    font-size: 1.2em;
-}
-.date-inputs {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
+  margin: 10px 0;
+  font-size: 1.2em;
 }
 
-.date-inputs select {
-    width: 48%; 
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    font-size: .8em;
-}
-
-.date-inputs select:focus {
-    outline: none;
-    border-color: #03396C; 
-}
-
-.date-inputs option {
-    padding: 8px;
-}
-
-.education .date-inputs select{
-    font-size: 1.3em;
-}
-.education .form-group label{
-    font-size: 1.4em;
-} 
-.remove-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: white;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-}
-.add-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: white;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.0em;
-}
-.education .remove-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: white;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.3em;
-}
-
-.education .add-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: white;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.3em;
-}
-
-.achievements .form-group {
+/***Contact details*****/
+.contact-form-group {
     margin-bottom: 20px;
-    background-color: #f0f8ff;
+    background-color: #e2e5e7;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}  
+
+.contact-details .form-group label {
+    font-size: .9em;
+    font-weight: bold;
+    color: #242424;
+}
+
+
+
+.contact-details .form-group input:focus {
+    border-color: #005b96;
+    box-shadow: 0px 0px 5px rgba(0, 91, 150, 0.2);
+    outline: none;
+}
+
+.contact-details .form-group input:hover {
+    border-color: #00406b;
+}
+
+.contact-details .form-group input[type="text"] {
+    background-color: #f9f9f9;
+}
+
+.contact-details .form-group input::placeholder {
+    font-style: italic;
+    color: #999;
+}
+
+
+/*********Experience***********/
+.work-experience .form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-experience .form-group label {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: rgb(29, 29, 29);
+}
+
+.work-experience .form-group input,
+.work-experience .form-group textarea,
+.work-experience .date-inputs select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-experience .form-group input:focus,
+.work-experience .form-group textarea:focus,
+.work-experience .date-inputs select:focus {
+  border-color: #005b96;
+  box-shadow: 0px 0px 5px rgba(0, 91, 150, 0.2);
+  outline: none;
+}
+
+.date-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.date-inputs select {
+  width: 48%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 0.9em;
+}
+
+.date-inputs select:hover {
+  border-color: #005b96;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.custom-checkbox input {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.custom-checkbox p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+  color: #1d1d1d;
+}
+
+.remove-button {
+  background-color: #fff;
+  color: #d21e27;
+  border: 1px solid #d21e27;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.remove-button:hover {
+  transform: scale(1.05);
+}
+
+.add-button {
+  background-color: #0d8715;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 15px;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.add-button:hover {
+  transform: scale(1.05);
+}
+
+/*********Skills***********/
+.skills .form-group {
+  margin-bottom: 20px;
+}
+
+.skills .form-group label {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+  color: black;
+}
+
+.skills .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.3em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  min-height: 120px;
+}
+
+.skills .form-group textarea:focus {
+  border-color: #005b96;
+  box-shadow: 0px 0px 5px rgba(0, 91, 150, 0.2);
+  outline: none;
+}
+
+.skills .form-group textarea:hover {
+  border-color: #005b96;
+}
+
+/*******Education***********/
+.education .date-inputs select {
+  font-size: 1.3em;
+}
+.education .form-group label {
+  font-size: 1.4em;
+}
+.remove-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.add-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.education .form-group {
+  margin-bottom: 20px;
+  background-color: #f0f8ff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.education .remove-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #eed4d6;
+  color: white;
+  border: 1px solid #a1545b;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+.education .add-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #b8e0ba;
+  color: white;
+  border: 1px solid #0d8715;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+/**** Achievements ****/
+.achievements .form-group {
+  margin-bottom: 20px;
+  background-color: #f0f8ff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .achievements .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-size: 1em;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 1em;
 }
 
-.achievements .form-group input, 
+.achievements .form-group input,
 .achievements .form-group select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1em;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
 }
 
 .achievements .remove-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #eed4d6;
-    color: white;
-    border: 1px solid #a1545b;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #eed4d6;
+  color: white;
+  border: 1px solid #a1545b;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
 }
 
 .achievements .add-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #b8e0ba;
-    color: white;
-    border: 1px solid #0d8715;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.0em;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #b8e0ba;
+  color: white;
+  border: 1px solid #0d8715;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
 }
-
 
 .achievements .date-inputs {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.achievements .date-inputs select, 
+.achievements .date-inputs select,
 .achievements .date-inputs input {
-    width: 48%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    font-size: 1em;
+  width: 48%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 1em;
 }
 
 .achievements .date-inputs select:focus,
 .achievements .date-inputs input:focus {
-    outline: none;
-    border-color: #03396C;
+  outline: none;
+  border-color: #03396c;
 }
-

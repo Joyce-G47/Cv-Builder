@@ -212,65 +212,68 @@ const Preview = () => {
           </button>
           {showDetails && (
             <>
-              <div className="form-group">
-                <label htmlFor="fullName">Full Name:</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="deliveryNote">Email Address:</label>
-                <input
-                  type="text"
-                  id="deliveryNote"
-                  name="deliveryNote"
-                  value={formData.deliveryNote}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="location">Address:</label>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phoneNumber">Phone Number:</label>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="portfolio">Portfolio:</label>
-                <input
-                  type="text"
-                  id="portfolio"
-                  name="portfolio"
-                  value={formData.portfolio}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="jobTitle">Job Title:</label>
-                <input
-                  type="text"
-                  id="jobTitle"
-                  name="jobTitle"
-                  value={formData.jobTitle}
-                  onChange={handleChange}
-                />
+              {" "}
+              <div className="contact-form-group">
+                <div className="form-group">
+                  <label htmlFor="fullName">Full Name:</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                  />
+             
+               
+                  <label htmlFor="deliveryNote">Email Address:</label>
+                  <input
+                    type="text"
+                    id="deliveryNote"
+                    name="deliveryNote"
+                    value={formData.deliveryNote}
+                    onChange={handleChange}
+                  />
+             
+            
+                  <label htmlFor="location">Address:</label>
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                  />
+               
+                
+                  <label htmlFor="phoneNumber">Phone Number:</label>
+                  <input
+                    type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                  />
+               
+             
+                  <label htmlFor="portfolio">Portfolio:</label>
+                  <input
+                    type="text"
+                    id="portfolio"
+                    name="portfolio"
+                    value={formData.portfolio}
+                    onChange={handleChange}
+                  />
+              
+              
+                  <label htmlFor="jobTitle">Job Title:</label>
+                  <input
+                    type="text"
+                    id="jobTitle"
+                    name="jobTitle"
+                    value={formData.jobTitle}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
             </>
           )}
