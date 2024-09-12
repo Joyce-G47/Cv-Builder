@@ -849,7 +849,7 @@ const Preview = () => {
                     }
                   />
 
-                  <button
+                  <div
                     className="remove-button"
                     type="button"
                     onClick={() => removeAchievement(achievement.id)}
@@ -858,17 +858,17 @@ const Preview = () => {
                       icon={faTrash}
                       style={{ color: "#d21e27" }}
                     />
-                  </button>
+                  </div>
                 </div>
               ))}
 
-              <button
+              <div
                 className="add-button"
                 type="button"
                 onClick={addAchievement}
               >
                 <FontAwesomeIcon icon={faPlus} style={{ color: "#0d8715" }} />
-              </button>
+              </div>
             </>
           )}
         </div>
