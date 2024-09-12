@@ -230,6 +230,7 @@ const Preview = () => {
                     type="text"
                     id="deliveryNote"
                     name="deliveryNote"
+                    placeholder=""
                     value={formData.deliveryNote}
                     onChange={handleChange}
                   />
