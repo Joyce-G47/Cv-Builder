@@ -69,40 +69,37 @@
 
 /***Contact details*****/
 .contact-form-group {
-    margin-bottom: 20px;
-    background-color: #e2e5e7;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-}  
-
-.contact-details .form-group label {
-    font-size: .9em;
-    font-weight: bold;
-    color: #242424;
+  margin-bottom: 20px;
+  background-color: #e2e5e7;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-
+.contact-details .form-group label {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #242424;
+}
 
 .contact-details .form-group input:focus {
-    border-color: #005b96;
-    box-shadow: 0px 0px 5px rgba(0, 91, 150, 0.2);
-    outline: none;
+  border-color: #005b96;
+  box-shadow: 0px 0px 5px rgba(0, 91, 150, 0.2);
+  outline: none;
 }
 
 .contact-details .form-group input:hover {
-    border-color: #00406b;
+  border-color: #00406b;
 }
 
 .contact-details .form-group input[type="text"] {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .contact-details .form-group input::placeholder {
-    font-style: italic;
-    color: #999;
+  font-style: italic;
+  color: #999;
 }
-
 
 /*********Experience***********/
 .work-experience .form-group {
@@ -112,7 +109,7 @@
 }
 
 .work-experience .form-group label {
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: bold;
   margin-bottom: 8px;
   color: rgb(29, 29, 29);
