@@ -36,7 +36,7 @@ const LoginPage = ({ onSwitchToRegister }) => {
     }
 
     try {
-      const response = await axios.post('http://192.168.12.193:5000/api/login', {
+      const response = await axios.post('http://172.24.6.241:5000/api/login', {
         email: email,
         password: pwd,
       });
